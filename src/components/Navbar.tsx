@@ -22,6 +22,23 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Handle Escape key to close mobile menu
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setMobileMenuOpen(false);
+    };
+    if (mobileMenuOpen) {
+      window.addEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      document.body.style.overflow = '';
+    };
+  }, [mobileMenuOpen]);
+
   const handleNavClick = (page: 'home' | 'treatments' | 'about' | 'contact') => {
     onNavigate(page);
     setMobileMenuOpen(false);
@@ -55,7 +72,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             : 'bg-transparent py-4 sm:py-5 border-b border-white/10'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-3 sm:px-8 flex items-center justify-between gap-2 sm:gap-6">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4">
           {/* Official Brand Logo (Compact on mobile) */}
           <button
             onClick={() => handleNavClick('home')}
@@ -65,15 +82,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <DentalZoneLogo size="md" variant="white" className="hidden sm:flex" />
           </button>
 
-          {/* Transparent Header Navigation Links */}
-          <nav className="hidden md:flex items-center gap-10">
+          {/* Transparent Header Navigation Links - Highly responsive layout */}
+          <nav className="hidden md:flex items-center justify-center flex-1 gap-4 lg:gap-10">
             {navLinks.map((link) => {
               const isActive = activePage === link.page;
               return (
                 <button
                   key={link.page}
                   onClick={() => handleNavClick(link.page)}
-                  className={`text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer py-1 relative ${
+                  className={`text-[10px] lg:text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer py-1 relative whitespace-nowrap ${
                     isActive
                       ? 'text-amber-400 font-bold'
                       : 'text-white/90 hover:text-white drop-shadow-xs'
@@ -89,14 +106,14 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Right Action: Responsive CTA */}
-          <div className="flex items-center gap-2 shrink-0">
+          <div className="flex items-center gap-3 shrink-0">
             <button
               onClick={handleBookAppointmentClick}
-              className="px-3.5 sm:px-6 py-2 sm:py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-[11px] sm:text-sm font-bold uppercase tracking-wider rounded-lg shadow-soft transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 active:scale-[0.98]"
+              className="px-3 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 text-[10px] lg:text-sm font-bold uppercase tracking-wider rounded-lg shadow-soft transition-all cursor-pointer whitespace-nowrap flex items-center gap-1.5 active:scale-[0.98]"
             >
               <span>Book</span>
               <span className="hidden sm:inline">Appointment</span>
-              <ArrowRight className="w-3.5 h-3.5 shrink-0" />
+              <ArrowRight className="w-3 h-3 lg:w-4 lg:h-4 shrink-0" />
             </button>
 
             {/* Mobile Hamburger */}
@@ -110,33 +127,40 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Mobile Drawer */}
+        {/* Mobile Drawer with Overlay */}
         {mobileMenuOpen && (
-          <div className="md:hidden bg-[#0B1528]/95 backdrop-blur-xl border-b border-slate-800 px-6 py-6 shadow-2xl space-y-4 animate-fadeIn text-white">
-            <div className="flex flex-col space-y-3">
-              {navLinks.map((link) => (
-                <button
-                  key={link.page}
-                  onClick={() => handleNavClick(link.page)}
-                  className={`text-left py-2.5 text-sm uppercase tracking-wider font-semibold border-b border-slate-800/80 transition-colors ${
-                    activePage === link.page ? 'text-amber-400 font-bold' : 'text-slate-200'
-                  }`}
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
+          <>
+            {/* Dark Overlay for outside click */}
+            <div 
+              className="fixed inset-0 top-[inherit] bg-black/40 backdrop-blur-sm z-[-1] h-[200vh]" 
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <div className="md:hidden bg-[#0B1528]/95 backdrop-blur-xl border-b border-slate-800 px-6 py-8 shadow-2xl space-y-6 animate-fadeIn text-white absolute left-0 right-0">
+              <div className="flex flex-col space-y-4">
+                {navLinks.map((link) => (
+                  <button
+                    key={link.page}
+                    onClick={() => handleNavClick(link.page)}
+                    className={`text-left py-3 text-sm uppercase tracking-wider font-semibold border-b border-slate-800/50 transition-colors ${
+                      activePage === link.page ? 'text-amber-400 font-bold' : 'text-slate-200'
+                    }`}
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
 
-            <div className="pt-2">
-              <button
-                onClick={handleBookAppointmentClick}
-                className="w-full py-3 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold uppercase tracking-wider rounded-lg text-xs flex items-center justify-center gap-2 shadow-sm"
-              >
-                <span>Book Appointment</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
+              <div className="pt-2">
+                <button
+                  onClick={handleBookAppointmentClick}
+                  className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 text-slate-950 font-bold uppercase tracking-wider rounded-lg text-sm flex items-center justify-center gap-2 shadow-sm"
+                >
+                  <span>Book Appointment</span>
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+              </div>
             </div>
-          </div>
+          </>
         )}
       </div>
     </header>
