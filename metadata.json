@@ -1,0 +1,6 @@
+{
+  "name": "Dental Zone Bahrain — Premium Dental Clinic & Implantology",
+  "description": "Official website for Dental Zone Bahrain in Riffa. Providing world-class cosmetic dentistry, composite veneers, dental implants, orthodontics, and gentle personalized patient care.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
