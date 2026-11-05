@@ -80,31 +80,36 @@ export const CLINIC_INFO = {
   ]
 };
 
+export const MEDIA = {
+  heroVideo: '/assets/videos/aesthetic_dental_clinic_loop.mp4',
+  heroVideoCdn: 'https://assets.mixkit.co/videos/39480/39480-720.mp4',
+};
+
 export const IMAGES = {
-  headerBg: '/src/assets/images/cinematic_clinic_header_hd_1793797167983.jpg',
-  heroCoupleBg: '/src/assets/images/dental_zone_hero_couple_hd_1793797649640.jpg',
-  brightClinicBg: '/src/assets/images/dental_zone_bright_clinic_hd_1793797859245.jpg',
+  headerBg: '/assets/images/cinematic_clinic_header_hd_1793797167983.jpg',
+  heroCoupleBg: '/assets/images/dental_zone_hero_couple_hd_1793797649640.jpg',
+  brightClinicBg: '/assets/images/dental_zone_bright_clinic_hd_1793797859245.jpg',
   officialLogo: '/assets/brand/dental_zone_official_logo.jpg',
-  heroDentist: '/src/assets/images/hero_dentist_patient_1793794974373.jpg',
-  clinicInterior: '/src/assets/images/clinic_interior_reception_1793794976540.jpg',
-  drAfrah: '/src/assets/images/doctor_dr_afrah_1793794976487.jpg',
-  smileBanner: '/src/assets/images/cinematic_smile_banner_1793794978140.jpg',
-  consultation: '/src/assets/images/appointment_consultation_1793794977458.jpg',
+  heroDentist: '/assets/images/hero_dentist_patient_1793794974373.jpg',
+  clinicInterior: '/assets/images/clinic_interior_reception_1793794976540.jpg',
+  drAfrah: '/assets/images/doctor_dr_afrah_1793794976487.jpg',
+  smileBanner: '/assets/images/cinematic_smile_banner_1793794978140.jpg',
+  consultation: '/assets/images/appointment_consultation_1793794977458.jpg',
   services: {
-    general: '/src/assets/images/service_general_dentistry_1793795008442.jpg',
-    cosmetic: '/src/assets/images/service_cosmetic_veneers_1793795007702.jpg',
-    orthodontics: '/src/assets/images/service_orthodontics_aligner_1793795009982.jpg',
-    implants: '/src/assets/images/service_dental_implants_1793795010170.jpg'
+    general: '/assets/images/service_general_dentistry_1793795008442.jpg',
+    cosmetic: '/assets/images/service_cosmetic_veneers_1793795007702.jpg',
+    orthodontics: '/assets/images/service_orthodontics_aligner_1793795009982.jpg',
+    implants: '/assets/images/service_dental_implants_1793795010170.jpg'
   },
   transformations: {
-    trans1Before: '/src/assets/images/smile_trans_1_before_1793795092714.jpg',
-    trans1After: '/src/assets/images/smile_trans_1_after_1793795092973.jpg',
-    trans2After: '/src/assets/images/smile_trans_2_after_1793795094191.jpg'
+    trans1Before: '/assets/images/smile_trans_1_before_1793795092714.jpg',
+    trans1After: '/assets/images/smile_trans_1_after_1793795092973.jpg',
+    trans2After: '/assets/images/smile_trans_2_after_1793795094191.jpg'
   },
   doctors: {
-    drAfrah: '/src/assets/images/doctor_dr_afrah_1793794976487.jpg',
-    orthodontist: '/src/assets/images/doctor_orthodontist_1793795112618.jpg',
-    implantologist: '/src/assets/images/doctor_implantologist_1793795112461.jpg'
+    drAfrah: '/assets/images/doctor_dr_afrah_1793794976487.jpg',
+    orthodontist: '/assets/images/doctor_orthodontist_1793795112618.jpg',
+    implantologist: '/assets/images/doctor_implantologist_1793795112461.jpg'
   }
 };
 

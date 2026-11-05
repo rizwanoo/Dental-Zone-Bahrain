@@ -62,17 +62,17 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
     <div className="w-full bg-white text-slate-800">
       {/* ==============================================================
           SECTION A: FULL-WIDTH CINEMATIC HERO OVER BRIGHT HD CLINIC PHOTO
-          (Zero blue layer, 100% bright natural HD photo visibility with crisp text shadow)
+          (Bright natural HD clinic photo 100% visible, zero blur, zero blue tint)
       ============================================================== */}
-      <section className="relative pt-36 pb-24 lg:pt-44 lg:pb-32 bg-slate-900 text-white overflow-hidden border-b border-slate-200">
-        {/* Bright HD Clinic Background Photo — 100% visible, bright, unmasked */}
+      <section className="relative pt-36 pb-24 lg:pt-44 lg:pb-32 bg-slate-950 text-white overflow-hidden border-b border-slate-200">
+        {/* Bright HD Clinic Background Photo — 100% visible, bright, crisp */}
         <div className="absolute inset-0 pointer-events-none">
           <img
             src={IMAGES.brightClinicBg}
             alt="Dental Zone Bahrain bright luxury clinic reception and waiting lounge"
             className="w-full h-full object-cover object-center filter brightness-105 contrast-105"
           />
-          {/* Extremely light bottom gradient for text contrast only — zero blue tint */}
+          {/* Subtle light gradient for text contrast only — zero blue layer */}
           <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-slate-950/30 to-transparent" />
         </div>
 
@@ -83,12 +83,12 @@ export const HomePage: React.FC<HomePageProps> = ({ onNavigate }) => {
               <span>Dental Zone Bahrain · Riffa Practice</span>
             </div>
 
-            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif-display font-bold text-white tracking-tight leading-[1.08] text-balance drop-shadow-[0_4px_12px_rgba(0,0,0,0.8)]">
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif-display font-bold text-white tracking-tight leading-[1.08] text-balance drop-shadow-[0_4px_18px_rgba(0,0,0,0.95)] drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
               Your Smile. <br />
-              <span className="text-amber-400 italic">Our Passion.</span>
+              <span className="text-amber-400 italic drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]">Our Passion.</span>
             </h1>
 
-            <p className="text-base sm:text-xl text-slate-100 leading-relaxed max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] font-medium">
+            <p className="text-base sm:text-xl text-white leading-relaxed max-w-2xl drop-shadow-[0_3px_12px_rgba(0,0,0,0.95)] drop-shadow-[0_1px_4px_rgba(0,0,0,0.9)] font-medium">
               Experience gentle, personalized dental excellence in Riffa, Bahrain. Specializing in handcrafted composite veneers, guided implants, and painless family care.
             </p>
 
